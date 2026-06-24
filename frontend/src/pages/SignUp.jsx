@@ -105,6 +105,9 @@ const handleSignUp=async ()=>{
             font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]' onClick={() => handleSignUp()} disabled={loading} >{loading?<ClipLoader size={30} color='white' />:"Sign Up"}
           </button>
             <p className="cursor-pointer text-gray-800" onClick={()=>navigate("/signin")}>Already Have An Account ? <span className="text-black border-b-2 border-b-black pb-[3px]" >Sign In</span></p>
+          <div className="text-center text-gray-400 text-sm mt-6">
+  Built with ❤️ by <span className="text-purple-400 font-medium">Adarsh</span>
+</div>
 
 
         </div>
