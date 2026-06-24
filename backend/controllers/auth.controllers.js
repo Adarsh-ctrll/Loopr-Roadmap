@@ -87,15 +87,37 @@ export const signIn=async (req,res)=>{
 
 } 
 
-export const signOut=async (req,res)=>{
+// export const signOut=async (req,res)=>{
+//     try {
+//         res.clearCookie("token")
+//         return res.status(200).json({message:"Sign out successfully"})
+        
+//     } catch (error) {
+//         return res.status(500).json({message:`Signout error ${error}`})
+        
+        
+//     }
+// }
+
+export const signOut = async (req,res)=>{
     try {
-        res.clearCookie("token")
-        return res.status(200).json({message:"Sign out successfully"})
-        
-    } catch (error) {
-        return res.status(500).json({message:`Signout error ${error}`})
-        
-        
+
+        res.clearCookie("token",{
+            httpOnly:true,
+            secure:true,
+            sameSite:"None"
+        });
+
+        return res.status(200).json({
+            message:"Sign out successfully"
+        });
+
+    } catch(error){
+
+        return res.status(500).json({
+            message:`Signout error ${error}`
+        });
+
     }
 }
 
