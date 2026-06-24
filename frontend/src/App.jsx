@@ -33,7 +33,7 @@ import MyRoadmaps from './pages/MyRoadmaps'
 import Milestones from './pages/Milestones'
 import Anonymous from './pages/Anonymous'
 
-export const serverUrl="http://localhost:8000"
+export const serverUrl="https://loopr-backend-hl4m.onrender.com"
 function App() {
   getCurrentUser()
 getSuggestedUsers()
