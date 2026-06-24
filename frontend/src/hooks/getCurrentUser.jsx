@@ -18,9 +18,12 @@ const fetchUser=async()=>{
 
         
     } catch (error) {
-            console.log("CURRENT USER ERROR:", error)
-        
+    console.log("CURRENT USER ERROR:", error);
+
+    if(error?.response?.status === 401){
+        dispatch(setUserData(null));
     }
+}
 }
 fetchUser()
 },[])
