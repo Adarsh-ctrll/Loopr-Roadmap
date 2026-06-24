@@ -20,7 +20,7 @@ import { app, server } from './socket.js'
 dns.setServers(["8.8.8.8"]);
 const port=process.env.PORT || 5000
 app.use(cors({
-    origin:"https://loopr-nqos.onrender.com",
+    origin:"https://loopr-seven.vercel.app",
     credentials:true
 }))
 app.use(express.json())
