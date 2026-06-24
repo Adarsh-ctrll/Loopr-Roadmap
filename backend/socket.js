@@ -7,7 +7,7 @@ const server=http.createServer(app)
 
 const io = new Server(server,{
     cors:{
-        origin:"https://loopr-nqos.onrender.com",
+        origin:"https://loopr-seven.vercel.app",
         methods:["GET","POST"],
         credentials:true
     }
