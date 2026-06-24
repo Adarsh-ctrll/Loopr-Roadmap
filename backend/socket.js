@@ -5,10 +5,11 @@ const app=express()
 
 const server=http.createServer(app)
 
-const io=new Server(server,{
+const io = new Server(server,{
     cors:{
         origin:"https://loopr-nqos.onrender.com",
-        methods:["GET","POST"]
+        methods:["GET","POST"],
+        credentials:true
     }
 })
 
@@ -18,11 +19,12 @@ return userSocketMap[receiverId]
 }
 
 io.on("connection",(socket)=>{
+     console.log("CONNECTED", socket.id);
     const userId=socket.handshake.query.userId
     if(userId!==undefined ){
         userSocketMap[userId]=socket.id
     }
-   
+
     io.emit('getOnlineUsers',Object.keys(userSocketMap))
 
 socket.on("typing",({receiverId})=>{
@@ -43,6 +45,7 @@ socket.on("stopTyping",({receiverId})=>{
     }
 })
     socket.on("disconnect",()=>{
+         console.log("DISCONNECTED", userId);
         delete userSocketMap[userId]
         io.emit('getOnlineUsers',Object.keys(userSocketMap))
 
