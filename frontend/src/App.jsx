@@ -50,12 +50,13 @@ getAllNotifications()
 
   useEffect(()=>{
     if(userData){
-      const socketIo=io(serverUrl,{
-        query:{
-          userId:userData._id
-        }
-
-      })
+const socketIo = io(serverUrl,{
+  withCredentials:true,
+  transports:["websocket"],
+  query:{
+    userId:userData._id
+  }
+})
       dispatch(setSocket(socketIo))
       socketIo.on("getOnlineUsers",(users)=>{
         dispatch(setOnlineUsers(users))
